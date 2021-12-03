@@ -1,0 +1,47 @@
+language: python
+python: 3.8
+
+os: linux
+dist: xenial
+
+before_install:
+  - pip install .[all]
+  - nvm install 14
+  - npm install
+  - npm install -g grunt-cli
+
+cache:
+  - pip
+  - npm
+
+jobs:
+  include:
+    - stage: Linters
+      script: grunt lint
+
+    - &unittests
+      stage: Unit tests
+      python: 3.6
+      script: grunt tests:unit    
+
+    - <<: *unittests
+      python: 3.7
+
+    - <<: *unittests
+      python: 3.8
+      after_success: python-codacy-coverage -r coverage.xml
+      env:
+        secure: None
+
+    - stage: Publish
+      script: echo This version refers to $(git describe --tags)
+      deploy:
+        provider: pypi
+        distributions: sdist bdist_wheel
+        username: "__token__"
+        password:
+          secure: None
+        on:
+          tags: true
+          branch: master
+          

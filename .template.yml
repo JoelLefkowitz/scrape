@@ -1,0 +1,34 @@
+output_dir: .
+
+clear_top_level: true
+logical_grouping: true
+
+collections:
+  - common
+  - python
+
+loader_paths:
+  - docs
+
+render_context:
+  project:
+    project_name: scrape
+    version: 1.6.3
+    private: true
+
+    verbose_name: Scrape
+    description: Web scraping utils.
+
+    repository: https://github.com/JoelLefkowitz/scrape
+
+    inserts:
+      - usage.md
+
+  package:
+    is_pypi_package: false
+    package_name: kiss_scrape
+
+  author:
+    author: Joel Lefkowitz
+    author_email: joellefkowitz@hotmail.com
+    author_github_handle: joellefkowitz

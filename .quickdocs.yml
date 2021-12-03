@@ -1,0 +1,6 @@
+project: scrape
+version: 1.6.3
+author: Joel Lefkowitz
+verbose_name: Scrape
+html_title: Scrape 
+github_url: https://github.com/JoelLefkowitz/scrape
