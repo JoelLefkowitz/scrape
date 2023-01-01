@@ -10,6 +10,7 @@
     },
     "metadata": {
         "documentation": "https://scrape.readthedocs.io/en/latest",
+        "packages": null,
         "languages": [
             "Python"
         ],
